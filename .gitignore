@@ -1,0 +1,4 @@
+build/
+waveforms/*.vcd
+__pycache__/
+*.pyc
