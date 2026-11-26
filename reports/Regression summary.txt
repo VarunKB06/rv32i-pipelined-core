@@ -1,0 +1,61 @@
+RV32I pipeline core - regression summary
+================================================
+directed tests : 7
+random programs: 40 (seeds 1..40, ~250 body instructions)
+passed         : 47 / 47
+retired insns  : 9526
+cycles         : 12099
+CPI            : 1.270
+load-use stalls: 283, redirect flushes: 1051
+event bins hit : 51 / 51
+
+result test           kind      retired/cycles
+PASS   t01_alu        directed  97/101
+PASS   t02_loadstore  directed  85/92
+PASS   t03_branches   directed  54/98
+PASS   t04_jumps      directed  31/45
+PASS   t05_hazards    directed  71/87
+PASS   t06_loops      directed  141/199
+PASS   t07_x0         directed  21/27
+PASS   rand_s1        random    222/289
+PASS   rand_s2        random    215/277
+PASS   rand_s3        random    235/289
+PASS   rand_s4        random    226/288
+PASS   rand_s5        random    228/285
+PASS   rand_s6        random    230/285
+PASS   rand_s7        random    227/280
+PASS   rand_s8        random    232/294
+PASS   rand_s9        random    242/294
+PASS   rand_s10       random    223/289
+PASS   rand_s11       random    213/276
+PASS   rand_s12       random    220/283
+PASS   rand_s13       random    230/282
+PASS   rand_s14       random    231/290
+PASS   rand_s15       random    219/284
+PASS   rand_s16       random    217/289
+PASS   rand_s17       random    213/290
+PASS   rand_s18       random    226/282
+PASS   rand_s19       random    221/286
+PASS   rand_s20       random    222/288
+PASS   rand_s21       random    223/290
+PASS   rand_s22       random    230/287
+PASS   rand_s23       random    238/291
+PASS   rand_s24       random    217/282
+PASS   rand_s25       random    240/288
+PASS   rand_s26       random    234/282
+PASS   rand_s27       random    214/280
+PASS   rand_s28       random    228/295
+PASS   rand_s29       random    230/288
+PASS   rand_s30       random    223/292
+PASS   rand_s31       random    232/291
+PASS   rand_s32       random    230/290
+PASS   rand_s33       random    215/276
+PASS   rand_s34       random    230/284
+PASS   rand_s35       random    227/280
+PASS   rand_s36       random    219/287
+PASS   rand_s37       random    229/289
+PASS   rand_s38       random    214/280
+PASS   rand_s39       random    234/291
+PASS   rand_s40       random    227/287
+
+FINAL: PASS
