@@ -1,5 +1,7 @@
 # RV32I 5-Stage Pipelined Core with Golden-Model Verification
 
+[![RV32I regression](https://github.com/VarunKB06/rv32i-pipelined-core/actions/workflows/regression.yml/badge.svg)](https://github.com/VarunKB06/rv32i-pipelined-core/actions/workflows/regression.yml)
+
 A 5-stage in-order **RV32I** processor core in Verilog/SystemVerilog (IF, ID, EX, MEM, WB) with data
 forwarding, load-use stalls and branch flushing, plus a verification environment that checks every
 retired instruction against an independent Python instruction-set simulator.
@@ -69,7 +71,7 @@ microarchitecture is in [docs/architecture.md](docs/architecture.md).
 
 ## Results
 
-Source: `reports/regression_summary.txt`, `reports/functional_coverage.txt`, `reports/mutation_summary.txt`.
+Source (committed in `reports/`): `reports/regression_summary.txt`, `reports/functional_coverage.txt`, `reports/mutation_summary.txt`.
 
 | Metric | Value |
 |---|---|
@@ -79,7 +81,7 @@ Source: `reports/regression_summary.txt`, `reports/functional_coverage.txt`, `re
 | Load-use stalls / redirect flushes | 283 / 1,051 |
 | Event bins hit | 51 / 51 |
 | Injected bugs caught | 11 / 11 |
-| CI run | _add the link to your Actions run_ |
+| CI | [GitHub Actions workflow runs](https://github.com/VarunKB06/rv32i-pipelined-core/actions/workflows/regression.yml) |
 
 What these numbers mean: every retired instruction matched the Python golden model, and every deliberately
 injected bug made the regression fail. They do not prove the core correct: the golden model was written by the
