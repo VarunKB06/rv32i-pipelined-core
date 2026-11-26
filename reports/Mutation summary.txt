@@ -1,0 +1,18 @@
+Bug-injection (mutation) sanity check
+========================================
+Each mutant is the RTL with one deliberate bug; the regression must FAIL on it.
+
+BUG_NO_FWD_MEMWB         CAUGHT by t01_alu        (no MEM/WB -> EX forwarding)
+BUG_FWD_PRIORITY_WRONG   CAUGHT by t01_alu        (MEM/WB forwarded in preference to EX/MEM (stale value))
+BUG_NO_LOADUSE_STALL     CAUGHT by t02_loadstore  (load-use hazard not stalled)
+BUG_NO_ID_FLUSH          CAUGHT by t03_branches   (taken branch does not squash the instruction in ID)
+BUG_NO_RF_BYPASS         CAUGHT by t01_alu        (no WB -> ID register-file bypass)
+BUG_X0_WRITE             CAUGHT by t04_jumps      (x0 can be written)
+BUG_SLT_UNSIGNED         CAUGHT by t01_alu        (SLT compares unsigned)
+BUG_SRA_LOGICAL          CAUGHT by t01_alu        (SRA/SRAI shift logically)
+BUG_BLT_UNSIGNED         CAUGHT by t03_branches   (BLT/BGE compare unsigned)
+BUG_LB_NO_SIGNEXT        CAUGHT by t02_loadstore  (LB does not sign-extend)
+BUG_STORE_NO_FWD         CAUGHT by t01_alu        (store data is not forwarded)
+
+caught 11 / 11 mutants
+FINAL: PASS
