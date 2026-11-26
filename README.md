@@ -4,20 +4,18 @@ A 5-stage in-order **RV32I** processor core in Verilog/SystemVerilog (IF, ID, EX
 forwarding, load-use stalls and branch flushing, plus a verification environment that checks every
 retired instruction against an independent Python instruction-set simulator.
 
-## Status (read this first)
+## Status
 
 | Item | State |
 |---|---|
-| RTL (`rtl/`) | Written. **Not yet compiled or simulated by the author of this package.** |
-| Python assembler, golden ISS, random generator | Written and self-tested (`python3 tools/rv32.py --selftest`) |
-| Directed tests (`tests/`) | Seven programs; all reach their PASS marker in the golden model |
-| Random programs | 1,000 seeds run through the golden model without errors |
-| Testbench, runner, CI workflow | Written; runner plumbing tested against a stub simulator only |
-| Regression / coverage / mutation results | **Pending: run them and record your own numbers below** |
+| RTL (`rtl/`) | Compiles and passes the full regression with Icarus Verilog in GitHub Actions |
+| Directed tests (`tests/`) | 7 / 7 pass |
+| Random programs | 40 / 40 pass (seeds 1-40, about 250 instructions each) |
+| Functional coverage | 51 / 51 event bins hit |
+| Bug-injection check | 11 / 11 injected bugs caught |
+| Not done | Official RISC-V compliance suite, native SVA, UVM, formal, synthesis (see Limitations) |
 
-Nothing in this repository claims a simulation result. After your first run, copy the real numbers from
-`reports/` into the Results section. If compilation or a test fails on the first run, that is expected
-debugging work: the failure output prints the expected and actual retire entry.
+All numbers below come from the CI run's `reports/` output.
 
 ## Features
 
@@ -71,16 +69,21 @@ microarchitecture is in [docs/architecture.md](docs/architecture.md).
 
 ## Results
 
-_Fill in after your first successful run (copy from `reports/`):_
+Source: `reports/regression_summary.txt`, `reports/functional_coverage.txt`, `reports/mutation_summary.txt`.
 
 | Metric | Value |
 |---|---|
-| Directed tests passing | _ / 7 |
-| Random programs passing (seeds 1..N) | _ / _ |
-| Instructions retired / cycles / CPI | _ |
-| Event bins hit | _ / 51 |
-| Mutants caught | _ / 11 |
-| CI run | _link_ |
+| Directed tests passing | 7 / 7 |
+| Random programs passing (seeds 1..40) | 40 / 40 |
+| Instructions retired / cycles | 9,526 / 12,099 (CPI 1.270) |
+| Load-use stalls / redirect flushes | 283 / 1,051 |
+| Event bins hit | 51 / 51 |
+| Injected bugs caught | 11 / 11 |
+| CI run | _add the link to your Actions run_ |
+
+What these numbers mean: every retired instruction matched the Python golden model, and every deliberately
+injected bug made the regression fail. They do not prove the core correct: the golden model was written by the
+same author as the RTL, and the coverage bins are hand-defined events.
 
 ## Limitations
 
